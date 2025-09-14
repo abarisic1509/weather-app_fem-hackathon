@@ -64,3 +64,24 @@ body {
 .btn-text {
 	@apply flex justify-center items-center gap-4 bg-primary-main hover:bg-primary-dark focus-visible:bg-primary-main disabled:bg-primary-main disabled:opacity-60 px-6 py-4 rounded-xl focus-visible:outline-2 focus-visible:outline-primary-main focus-visible:outline-offset-2 font-semibold text-white text-xl text-center whitespace-nowrap cursor-pointer disabled:cursor-not-allowed;
 }
+
+/* Layout */
+.forecast-grid {
+	@media (min-width: 1280px) {
+		grid-template-columns: 1fr 24rem;
+		grid-template-rows: auto auto;
+		grid-template-areas:
+			'current hourly'
+			'daily hourly';
+
+		.current {
+			grid-area: current;
+		}
+		.daily {
+			grid-area: daily;
+		}
+		.hourly {
+			grid-area: hourly;
+		}
+	}
+}
