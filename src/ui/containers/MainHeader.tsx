@@ -1,6 +1,5 @@
-import Logo from '../../assets/Logo';
-
-import SettingsMenu from './components/SettingsMenu';
+import Logo from '../assets/Logo';
+import SettingsMenu from '../components/SettingsMenu';
 
 const MainHeader = () => {
 	return (

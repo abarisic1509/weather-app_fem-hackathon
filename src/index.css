@@ -30,6 +30,7 @@ body {
 	@apply flex flex-col flex-1 bg-grey-900 light:bg-white text-white light:text-text-primary;
 }
 
+/* Typography */
 .text-preset-1 {
 	@apply font-semibold text-8xl leading-none;
 	letter-spacing: -2px;
@@ -57,4 +58,9 @@ body {
 }
 .text-preset-8 {
 	@apply text-sm;
+}
+
+/* Buttons */
+.btn-text {
+	@apply flex justify-center items-center gap-4 bg-primary-main hover:bg-primary-dark focus-visible:bg-primary-main disabled:bg-primary-main disabled:opacity-60 px-6 py-4 rounded-xl focus-visible:outline-2 focus-visible:outline-primary-main focus-visible:outline-offset-2 font-semibold text-white text-xl text-center whitespace-nowrap cursor-pointer disabled:cursor-not-allowed;
 }

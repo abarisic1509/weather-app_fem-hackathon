@@ -2,11 +2,10 @@ const Logo = () => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width="197"
-			height="40"
+			height="28"
 			fill="none"
 			viewBox="0 0 197 40"
-			className="text-white light:text-black"
+			className="md:h-10 text-white light:text-black"
 		>
 			<g clipPath="url(#a)">
 				<path

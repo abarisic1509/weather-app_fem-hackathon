@@ -6,7 +6,7 @@ const SettingsMenu = () => {
 		<Menu.Root>
 			<Menu.Trigger
 				className={
-					'px-4 py-3 rounded-lg flex items-center gap-2.5 text-preset-7 text-white light:text-black bg-grey-800 hover:bg-grey-700 light:bg-white light:hover:bg-grey-200/50 light:border light:border-grey-200 cursor-pointer'
+					'px-4 py-3 rounded-lg flex items-center gap-2.5 text-preset-7 text-white light:text-black bg-grey-800 hover:bg-grey-700 light:bg-white light:hover:bg-grey-200/50 light:outline light:outline-white outline-offset-2 cursor-pointer'
 				}
 			>
 				<FaGear /> Units <FaChevronDown />
@@ -20,7 +20,7 @@ const SettingsMenu = () => {
 					>
 						<Menu.Item
 							className={
-								'px-2 py-2.5 rounded-lg hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer border border-transparent focus:bg-grey-700  focus:border-white light:focus:bg-grey-200/50 light:focus:border-grey-900'
+								'px-2 py-2.5 rounded-lg hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer outline outline-transparent focus:bg-grey-700  focus:outline-white outline-offset-2 light:focus:bg-grey-200/50 light:focus:outline-grey-900'
 							}
 						>
 							Switch to Imperial
@@ -35,7 +35,7 @@ const SettingsMenu = () => {
 							</Menu.GroupLabel>
 							<Menu.Item
 								className={
-									'px-2 py-2.5 rounded-lg bg-grey-700 hover:bg-grey-700 light:bg-grey-200/50 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between border border-transparent focus:bg-grey-700 focus:border-white light:focus:bg-grey-200/50 light:focus:border-grey-900'
+									'px-2 py-2.5 rounded-lg bg-grey-700 hover:bg-grey-700 light:bg-grey-200/50 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between outline outline-transparent focus:bg-grey-700 focus:outline-white outline-offset-2 light:focus:bg-grey-200/50 light:focus:outline-grey-900'
 								}
 							>
 								<span>Celsius (°C)</span>
@@ -43,7 +43,7 @@ const SettingsMenu = () => {
 							</Menu.Item>
 							<Menu.Item
 								className={
-									'px-2 py-2.5 rounded-lg hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between border border-transparent focus:bg-grey-700 focus:border-white light:focus:bg-grey-200/50 light:focus:border-grey-900'
+									'px-2 py-2.5 rounded-lg hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between outline outline-transparent focus:bg-grey-700 focus:outline-white outline-offset-2 light:focus:bg-grey-200/50 light:focus:outline-grey-900'
 								}
 							>
 								<span>Farenheit (°F)</span>
@@ -60,7 +60,7 @@ const SettingsMenu = () => {
 							</Menu.GroupLabel>
 							<Menu.Item
 								className={
-									'px-2 py-2.5 rounded-lg bg-grey-700 hover:bg-grey-700 light:bg-grey-200/50 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between border border-transparent focus:bg-grey-700 focus:border-white light:focus:bg-grey-200/50 light:focus:border-grey-900'
+									'px-2 py-2.5 rounded-lg bg-grey-700 hover:bg-grey-700 light:bg-grey-200/50 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between outline outline-transparent focus:bg-grey-700 focus:outline-white outline-offset-2 light:focus:bg-grey-200/50 light:focus:outline-grey-900'
 								}
 							>
 								<span>km/h</span>
@@ -68,7 +68,7 @@ const SettingsMenu = () => {
 							</Menu.Item>
 							<Menu.Item
 								className={
-									'px-2 py-2.5 rounded-lg hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between border border-transparent focus:bg-grey-700 focus:border-white light:focus:bg-grey-200/50 light:focus:border-grey-900'
+									'px-2 py-2.5 rounded-lg hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between outline outline-transparent focus:bg-grey-700 focus:outline-white outline-offset-2 light:focus:bg-grey-200/50 light:focus:outline-grey-900'
 								}
 							>
 								<span>mph</span>
@@ -85,7 +85,7 @@ const SettingsMenu = () => {
 							</Menu.GroupLabel>
 							<Menu.Item
 								className={
-									'px-2 py-2.5 rounded-lg bg-grey-700 light:bg-grey-200/50 hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between border border-transparent focus:bg-grey-700 focus:border-white light:focus:bg-grey-200/50 light:focus:border-grey-900'
+									'px-2 py-2.5 rounded-lg bg-grey-700 light:bg-grey-200/50 hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between outline outline-transparent focus:bg-grey-700 focus:outline-white outline-offset-2 light:focus:bg-grey-200/50 light:focus:outline-grey-900'
 								}
 							>
 								<span>Millimeters (mm)</span>
@@ -93,7 +93,7 @@ const SettingsMenu = () => {
 							</Menu.Item>
 							<Menu.Item
 								className={
-									'px-2 py-2.5 rounded-lg hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between border border-transparent focus:bg-grey-700 focus:border-white light:focus:bg-grey-200/50 light:focus:border-grey-900'
+									'px-2 py-2.5 rounded-lg hover:bg-grey-700 light:hover:bg-grey-200/50 cursor-pointer flex items-center justify-between outline outline-transparent focus:bg-grey-700 focus:outline-white outline-offset-2 light:focus:bg-grey-200/50 light:focus:outline-grey-900'
 								}
 							>
 								<span>Inches (in)</span>
