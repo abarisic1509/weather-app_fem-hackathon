@@ -1,1 +1,30 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+	--color-primary-main: hsl(233, 67%, 56%);
+	--color-primary-dark: hsl(248, 70%, 36%);
+	--color-secondary-main: hsl(28, 100%, 52%);
+	--color-text-primary: hsl(243, 96%, 9%);
+	--color-text-secondary: hsl(243, 23%, 30%);
+	--color-grey-900: hsl(243, 96%, 9%);
+	--color-grey-800: hsl(243, 27%, 20%);
+	--color-grey-700: hsl(243, 23%, 24%);
+	--color-grey-600: hsl(243, 23%, 30%);
+	--color-grey-300: hsl(240, 6%, 70%);
+	--color-grey-200: hsl(250, 6%, 84%);
+
+	--font-dm-sans: 'DM Sans', sans-serif;
+	--font-bricolage-grotesque: 'Bricolage Grotesque', sans-serif;
+
+	--container-8xl: 1440px;
+}
+
+@custom-variant light (&:where(.light, .light *));
+
+body {
+	@apply flex flex-col w-screen min-h-screen overflow-x-hidden;
+}
+
+#root {
+	@apply flex flex-col flex-1 bg-grey-900 light:bg-grey-200 text-white light:text-text-primary;
+}

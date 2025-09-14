@@ -1,4 +1,4 @@
-// eslint.config.ts
+import { defineConfig } from 'eslint/config';
 import js from '@eslint/js';
 import globals from 'globals';
 import react from 'eslint-plugin-react';
@@ -7,10 +7,12 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import importPlugin from 'eslint-plugin-import';
 import unusedImports from 'eslint-plugin-unused-imports';
 import tseslint from 'typescript-eslint';
-import prettier from 'eslint-config-prettier';
+import prettierConfig from 'eslint-config-prettier';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import eslintAlly from 'eslint-plugin-jsx-a11y';
 import { globalIgnores } from 'eslint/config';
 
-export default tseslint.config([
+export default defineConfig([
 	globalIgnores(['dist', 'build', 'coverage', 'node_modules']),
 	{
 		files: ['**/*.{ts,tsx}'],
@@ -18,7 +20,7 @@ export default tseslint.config([
 			ecmaVersion: 2020,
 			parser: tseslint.parser,
 			parserOptions: {
-				project: true,
+				project: './tsconfig.app.json',
 				tsconfigRootDir: process.cwd(),
 				sourceType: 'module',
 			},
@@ -26,10 +28,9 @@ export default tseslint.config([
 		},
 		plugins: {
 			react,
-			'react-hooks': reactHooks,
-			'react-refresh': reactRefresh,
 			import: importPlugin,
 			'unused-imports': unusedImports,
+			'jsx-a11y': eslintAlly,
 		},
 		settings: {
 			react: {
@@ -42,13 +43,21 @@ export default tseslint.config([
 			tseslint.configs.recommendedTypeChecked,
 			reactHooks.configs['recommended-latest'],
 			reactRefresh.configs.vite,
-			prettier,
+			react.configs.flat.recommended,
+			prettierConfig,
+			eslintPluginPrettierRecommended,
 		],
 		rules: {
-			'unused-imports/no-unused-imports': 'warn',
+			'no-unused-vars': 'off',
+			'@typescript-eslint/no-unused-vars': 'error',
 			'unused-imports/no-unused-vars': [
-				'warn',
-				{ vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+				'error',
+				{
+					vars: 'all',
+					varsIgnorePattern: '^_',
+					args: 'after-used',
+					argsIgnorePattern: '^_',
+				},
 			],
 			'import/order': [
 				'warn',
@@ -58,17 +67,20 @@ export default tseslint.config([
 				},
 			],
 			'import/no-unresolved': 'error',
-			'react/jsx-no-useless-fragment': 'warn',
+			'react/jsx-no-useless-fragment': 'error',
 			'react/self-closing-comp': 'warn',
 			'react/jsx-pascal-case': 'warn',
 			eqeqeq: ['error', 'always'],
 			'no-console': ['warn', { allow: ['warn', 'error'] }],
 			'no-debugger': 'warn',
-			'no-unused-vars': 'off',
+			'no-unused-vars': 'error',
 			'prefer-const': 'warn',
 			'no-multi-spaces': 'warn',
 			'no-trailing-spaces': 'warn',
 			'arrow-body-style': ['warn', 'as-needed'],
+			'jsx-a11y/alt-text': 'warn',
+			'jsx-a11y/anchor-is-valid': 'warn',
+			'react/react-in-jsx-scope': 'off',
 		},
 	},
 ]);
