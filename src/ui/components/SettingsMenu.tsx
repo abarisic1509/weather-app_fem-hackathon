@@ -3,7 +3,7 @@ import { FaCheck, FaChevronDown, FaGear } from 'react-icons/fa6';
 
 const SettingsMenu = () => {
 	return (
-		<Menu.Root>
+		<Menu.Root modal={false}>
 			<Menu.Trigger
 				className={
 					'px-4 py-3 rounded-lg flex items-center gap-2.5 text-preset-7 text-white light:text-black bg-grey-800 hover:bg-grey-700 light:bg-white light:hover:bg-grey-200/50 light:outline light:outline-white outline-offset-2 cursor-pointer'
