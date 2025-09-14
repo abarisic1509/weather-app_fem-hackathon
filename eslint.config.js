@@ -36,6 +36,11 @@ export default defineConfig([
 			react: {
 				version: 'detect',
 			},
+			'import/resolver': {
+				node: {
+					extensions: ['.js', '.jsx', '.ts', '.tsx'],
+				},
+			},
 		},
 		extends: [
 			js.configs.recommended,
@@ -75,9 +80,6 @@ export default defineConfig([
 			'no-debugger': 'warn',
 			'no-unused-vars': 'error',
 			'prefer-const': 'warn',
-			'no-multi-spaces': 'warn',
-			'no-trailing-spaces': 'warn',
-			'arrow-body-style': ['warn', 'as-needed'],
 			'jsx-a11y/alt-text': 'warn',
 			'jsx-a11y/anchor-is-valid': 'warn',
 			'react/react-in-jsx-scope': 'off',

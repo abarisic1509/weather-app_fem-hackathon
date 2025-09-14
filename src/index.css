@@ -27,36 +27,34 @@ body {
 }
 
 #root {
-	@apply flex flex-col flex-1 bg-grey-900 light:bg-grey-200 text-white light:text-text-primary;
+	@apply flex flex-col flex-1 bg-grey-900 light:bg-white text-white light:text-text-primary;
 }
 
-@utility {
-	.text-preset-1 {
-		@apply font-semibold text-8xl leading-none;
-		letter-spacing: -2px;
-	}
-	.text-preset-2 {
-		@apply font-bricolage-grotesque font-bold;
-		font-size: 3.25rem;
-	}
-	.text-preset-3 {
-		@apply font-light leading-none;
-		font-size: 2rem;
-	}
-	.text-preset-4 {
-		@apply font-bold;
-		font-size: 1.75rem;
-	}
-	.text-preset-5 {
-		@apply font-semibold text-xl;
-	}
-	.text-preset-5-medium {
-		@apply text-xl;
-	}
-	.text-preset-7 {
-		@apply text-base;
-	}
-	.text-preset-8 {
-		@apply text-sm;
-	}
+.text-preset-1 {
+	@apply font-semibold text-8xl leading-none;
+	letter-spacing: -2px;
+}
+.text-preset-2 {
+	@apply font-bricolage-grotesque font-bold;
+	font-size: 3.25rem;
+}
+.text-preset-3 {
+	@apply font-light leading-none;
+	font-size: 2rem;
+}
+.text-preset-4 {
+	@apply font-bold;
+	font-size: 1.75rem;
+}
+.text-preset-5 {
+	@apply font-semibold text-xl;
+}
+.text-preset-5-medium {
+	@apply text-xl;
+}
+.text-preset-7 {
+	@apply text-base;
+}
+.text-preset-8 {
+	@apply text-sm;
 }
