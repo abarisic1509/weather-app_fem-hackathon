@@ -15,42 +15,7 @@ const SearchBar = () => {
 	const [searchState, setSearchState] = useState<'loading' | 'error' | null>('loading');
 	const debounceTimer = useRef<NodeJS.Timeout | null>(null);
 
-	const debounceSearch = () => {
-		if (debounceTimer.current) {
-			clearTimeout(debounceTimer.current);
-		}
-
-		debounceTimer.current = setTimeout(() => {
-			setSearchState('loading');
-			getCities();
-		}, 500);
-	};
-
-	const handleInputChange = useCallback((term: string) => {
-		setSearchState(null);
-		setSearchTerm(term);
-		if (term.length >= 2) {
-			debounceSearch();
-		}
-	}, []);
-
-	const handleResultClick = useCallback(
-		(city: City) => {
-			setSearchTerm(city.name);
-			dispatch(setSelectedCity({ latitude: city.lat, longitude: city.lng, name: city.name }));
-		},
-		[
-			/* handleCitySelection */
-		]
-	);
-
-	const handleClear = useCallback(() => {
-		setSearchTerm('');
-		setSearchState(null);
-		setResults([]);
-	}, []);
-
-	const getCities = async () => {
+	const getCities = useCallback(async () => {
 		const baseUrl = getBaseUrl();
 
 		try {
@@ -66,7 +31,43 @@ const SearchBar = () => {
 		} catch (error) {
 			setSearchState('error');
 		}
-	};
+	}, [searchTerm]);
+
+	const debounceSearch = useCallback(() => {
+		if (debounceTimer.current) {
+			clearTimeout(debounceTimer.current);
+		}
+
+		debounceTimer.current = setTimeout(() => {
+			setSearchState('loading');
+			getCities();
+		}, 500);
+	}, [getCities]);
+
+	const handleInputChange = useCallback(
+		(term: string) => {
+			setSearchState(null);
+			setSearchTerm(term);
+			if (term.length >= 2) {
+				debounceSearch();
+			}
+		},
+		[debounceSearch]
+	);
+
+	const handleResultClick = useCallback(
+		(city: City) => {
+			setSearchTerm(city.name);
+			dispatch(setSelectedCity({ latitude: city.lat, longitude: city.lng, name: city.name }));
+		},
+		[dispatch]
+	);
+
+	const handleClear = useCallback(() => {
+		setSearchTerm('');
+		setSearchState(null);
+		setResults([]);
+	}, []);
 
 	return (
 		<form className="flex sm:flex-row flex-col justify-center items-center gap-3 md:gap-4 mx-auto w-full max-w-[41rem]">

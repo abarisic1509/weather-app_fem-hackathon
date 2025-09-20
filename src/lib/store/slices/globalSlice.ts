@@ -1,7 +1,7 @@
 import { SelectedCity } from '@/lib/types/city';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface GlobalState {
+export interface GlobalState {
 	selectedCity: SelectedCity | null;
 	selectedMeasures: 'metric' | 'imperial';
 }

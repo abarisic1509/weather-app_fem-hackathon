@@ -1,5 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import globalReducer from './slices/globalSlice';
+import globalReducer, { GlobalState } from './slices/globalSlice';
+
+export interface RootState {
+	global: GlobalState;
+}
 
 const store = configureStore({
 	reducer: {
