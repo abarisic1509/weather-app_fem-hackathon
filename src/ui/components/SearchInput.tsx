@@ -28,6 +28,7 @@ const SearchInput = ({
 	const handleResultClick = (city: City) => {
 		onResultClick(city); // Notify the parent when a city is selected
 	};
+
 	return (
 		<Autocomplete.Root items={results}>
 			<label className="grid grid-cols-[auto_1fr_auto] grid-rows-1 w-full text-grey-200 light:text-grey-600">
@@ -45,9 +46,7 @@ const SearchInput = ({
 					className={`bg-grey-800 light:bg-grey-200/50 w-full rounded-xl py-4 px-[3.75rem]  text-preset-5-medium hover:bg-grey-700 light:hover:bg-grey-200/80 focus-within:bg-grey-800 light:focus-within:bg-grey-200/50 focus-within:outline focus-within:outline-white light:focus-within:outline-grey-900 focus-within:outline-offset-2 col-span-full col-start-1 -col-end-1 row-start-1 row-end-2`}
 				/>
 				<Autocomplete.Clear
-					className={
-						'-col-start-1 -col-end-2 h-full aspect-square grid place-items-center row-start-1 row-end-2'
-					}
+					className={'-col-start-1 -col-end-2 h-full aspect-square grid place-items-center row-start-1 row-end-2'}
 					tabIndex={0}
 					onClick={handleClear}
 				>

@@ -3,18 +3,23 @@ import { Combobox } from '@base-ui-components/react/combobox';
 
 const days = [
 	{ label: 'Select day', value: null },
-	{ label: 'Monday', value: 'monday' },
-	{ label: 'Tuesday', value: 'tuesday' },
-	{ label: 'Wednesday', value: 'wednesday' },
-	{ label: 'Thursday', value: 'thursday' },
-	{ label: 'Friday', value: 'friday' },
-	{ label: 'Saturday', value: 'saturday' },
-	{ label: 'Sunday', value: 'sunday' },
+	{ label: 'Monday', value: 'Monday' },
+	{ label: 'Tuesday', value: 'Tuesday' },
+	{ label: 'Wednesday', value: 'Wednesday' },
+	{ label: 'Thursday', value: 'Thursday' },
+	{ label: 'Friday', value: 'Friday' },
+	{ label: 'Saturday', value: 'Saturday' },
+	{ label: 'Sunday', value: 'Sunday' },
 ];
 
-const DaySelect = () => {
+interface DaySelectProps {
+	selectedDay: string;
+	setSelectedDay: (day: string) => void;
+}
+
+const DaySelect = ({ selectedDay, setSelectedDay }: DaySelectProps) => {
 	return (
-		<Combobox.Root items={days} modal={false}>
+		<Combobox.Root items={days} modal={false} value={selectedDay} onValueChange={setSelectedDay}>
 			<Combobox.Trigger className="flex justify-between items-center gap-3 bg-grey-600 light:bg-grey-200/50 hover:opacity-80 px-4 py-2 rounded-lg text-preset-7 text-white light:text-grey-800 cursor-pointer select-none">
 				<Combobox.Value />
 				<Combobox.Icon className="flex">

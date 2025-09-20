@@ -39,7 +39,7 @@ const HourlyForecast = ({ hourlyForecastData }: HourlyForecastProps) => {
 			<div className="top-0 left-0 sticky flex justify-between items-center bg-grey-800 px-4 sm:px-6 py-5 sm:py-6">
 				<h2 className="text-preset-5 text-white light:text-grey-900">Hourly forecast</h2>
 
-				<DaySelect />
+				<DaySelect selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
 			</div>
 			<ul className="flex flex-col gap-4 px-4 sm:px-6">
 				{selectedDay === '' ? (
