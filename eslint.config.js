@@ -78,7 +78,7 @@ export default defineConfig([
 			eqeqeq: ['error', 'always'],
 			'no-console': ['warn', { allow: ['warn', 'error'] }],
 			'no-debugger': 'warn',
-			'no-unused-vars': 'error',
+			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 			'prefer-const': 'warn',
 			'jsx-a11y/alt-text': 'warn',
 			'jsx-a11y/anchor-is-valid': 'warn',
