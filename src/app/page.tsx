@@ -1,26 +1,17 @@
-import CurrentForecast from '@/ui/containers/CurrentForecast';
-import DailyForecast from '@/ui/containers/DailyForecast';
-import HourlyForecast from '@/ui/containers/HourlyForecast';
+import CityForecast from '@/ui/containers/CityForecast';
 import MainHeader from '@/ui/containers/MainHeader';
 import SearchBar from '@/ui/containers/SearchBar';
 
-export default async function Home() {
+export default function Home() {
 	return (
 		<div className="flex flex-col flex-1 gap-12 xl:gap-16 mx-auto px-4 md:px-6 xl:px-28 pt-4 md:pt-6 xl:pt-12 pb-12 md:pb-20 w-full max-w-8xl">
 			<MainHeader />
 			<main className="flex flex-col flex-1 gap-8 xl:gap-12 mx-auto w-full max-w-8xl">
-				<h1 className="mb-4 text-preset-2 text-white light:text-grey-900 text-center">
-					How’s the sky looking today?
-				</h1>
+				<h1 className="mb-4 text-preset-2 text-white light:text-grey-900 text-center">How’s the sky looking today?</h1>
 
 				<div className="flex flex-col gap-8 xl:gap-12">
 					<SearchBar />
-
-					<div className="gap-8 forecast-grid grid w-full">
-						<CurrentForecast />
-						<DailyForecast />
-						<HourlyForecast />
-					</div>
+					<CityForecast />
 				</div>
 			</main>
 		</div>

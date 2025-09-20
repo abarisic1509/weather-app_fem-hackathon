@@ -58,7 +58,9 @@ const SearchBar = () => {
 	const handleResultClick = useCallback(
 		(city: City) => {
 			setSearchTerm(city.name);
-			dispatch(setSelectedCity({ latitude: city.lat, longitude: city.lng, name: city.name }));
+			dispatch(
+				setSelectedCity({ latitude: city.lat, longitude: city.lng, name: city.name, countryCode: city.country })
+			);
 		},
 		[dispatch]
 	);

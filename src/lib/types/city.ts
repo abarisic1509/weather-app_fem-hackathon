@@ -12,4 +12,5 @@ export type SelectedCity = {
 	latitude: string;
 	longitude: string;
 	name: string;
+	countryCode: string;
 };
