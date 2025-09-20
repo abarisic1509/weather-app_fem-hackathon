@@ -8,7 +8,8 @@ export type CitiesData = {
 	cities: City[];
 };
 
-export type CityLocation = {
+export type SelectedCity = {
 	latitude: string;
 	longitude: string;
+	name: string;
 };

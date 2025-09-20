@@ -13,8 +13,8 @@
 	--color-grey-300: hsl(240, 6%, 70%);
 	--color-grey-200: hsl(250, 6%, 84%);
 
-	--font-dm-sans: 'DM Sans', sans-serif;
-	--font-bricolage-grotesque: 'Bricolage Grotesque', sans-serif;
+	--font-dm-sans: var(--font-dm);
+	--font-bricolage-grotesque: var(--font-bricolage);
 
 	--container-8xl: 1440px;
 }
@@ -22,12 +22,8 @@
 @custom-variant light (&:where(.light, .light *));
 
 body {
-	@apply flex flex-col w-screen min-h-screen overflow-x-hidden font-dm-sans font-medium text-lg;
+	@apply flex flex-col bg-grey-900 light:bg-white w-screen min-h-screen overflow-x-hidden font-dm-sans font-medium text-white light:text-text-primary text-lg;
 	line-height: 1.2;
-}
-
-#root {
-	@apply flex flex-col flex-1 bg-grey-900 light:bg-white text-white light:text-text-primary;
 }
 
 /* Typography */

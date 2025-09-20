@@ -10,6 +10,7 @@ interface SearchInputProps {
 	onResultClick: (_city: City) => void;
 	searchTerm: string;
 	searchState: 'loading' | 'error' | null;
+	handleClear: () => void;
 }
 
 const SearchInput = ({
@@ -18,6 +19,7 @@ const SearchInput = ({
 	onResultClick,
 	searchTerm,
 	searchState,
+	handleClear,
 }: SearchInputProps) => {
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onInputChange(e.target.value);
@@ -47,6 +49,7 @@ const SearchInput = ({
 						'-col-start-1 -col-end-2 h-full aspect-square grid place-items-center row-start-1 row-end-2'
 					}
 					tabIndex={0}
+					onClick={handleClear}
 				>
 					<FaX />
 				</Autocomplete.Clear>

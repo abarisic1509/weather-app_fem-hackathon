@@ -1,8 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-export const getWeatherApiUrl = (): string => {
-	const url: string | undefined = import.meta.env['VITE_WEATHER_API_URL'];
+export const getBaseUrl = (): string => {
+	const url: string | undefined = process.env['NEXT_PUBLIC_BASE_URL'];
 
-	if (!url) throw new Error('VITE_WEATHER_API_URL is not defined');
+	if (!url) throw new Error('NEXT_PUBLIC_BASE_URL is not defined');
+
+	return url;
+};
+export const getWeatherApiUrl = (): string => {
+	const url: string | undefined = process.env['NEXT_PUBLIC_WEATHER_API_URL'];
+
+	if (!url) throw new Error('NEXT_PUBLIC_WEATHER_API_URL is not defined');
 
 	return url;
 };

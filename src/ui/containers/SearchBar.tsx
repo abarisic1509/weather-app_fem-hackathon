@@ -1,43 +1,71 @@
-import { useRef, useState } from 'react';
+'use client';
+
+import { useCallback, useRef, useState } from 'react';
 
 import SearchInput from '../components/SearchInput';
 import type { City } from '../../lib/types/city';
-import { getCity } from '../../lib/helpers/getCity';
+import { useDispatch } from 'react-redux';
+import { setSelectedCity } from '@/lib/store/slices/globalSlice';
+import { getBaseUrl } from '@/lib/helpers/getEnv';
 
-interface SearchBarProps {
-	handleCitySelection: (_lat: string, _lng: string) => void;
-}
-
-const SearchBar = ({ handleCitySelection }: SearchBarProps) => {
+const SearchBar = () => {
+	const dispatch = useDispatch();
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const [results, setResults] = useState<City[]>([]);
 	const [searchState, setSearchState] = useState<'loading' | 'error' | null>('loading');
 	const debounceTimer = useRef<NodeJS.Timeout | null>(null);
 
-	const debounceSearch = (term: string) => {
+	const debounceSearch = () => {
 		if (debounceTimer.current) {
 			clearTimeout(debounceTimer.current);
 		}
 
 		debounceTimer.current = setTimeout(() => {
 			setSearchState('loading');
-			const res = getCity(term);
-			if (!res) setSearchState('error');
-			else setResults(res);
+			getCities();
 		}, 500);
 	};
 
-	const handleInputChange = (term: string) => {
+	const handleInputChange = useCallback((term: string) => {
 		setSearchState(null);
 		setSearchTerm(term);
 		if (term.length >= 2) {
-			debounceSearch(term);
+			debounceSearch();
 		}
-	};
+	}, []);
 
-	const handleResultClick = (city: City) => {
-		setSearchTerm(city.name);
-		handleCitySelection(city.lat, city.lng);
+	const handleResultClick = useCallback(
+		(city: City) => {
+			setSearchTerm(city.name);
+			dispatch(setSelectedCity({ latitude: city.lat, longitude: city.lng, name: city.name }));
+		},
+		[
+			/* handleCitySelection */
+		]
+	);
+
+	const handleClear = useCallback(() => {
+		setSearchTerm('');
+		setSearchState(null);
+		setResults([]);
+	}, []);
+
+	const getCities = async () => {
+		const baseUrl = getBaseUrl();
+
+		try {
+			const res = await fetch(`${baseUrl}/api/cities?search=${searchTerm}`, {
+				method: 'GET',
+			});
+			const data = await res.json();
+			if (data.length === 0) {
+				setSearchState('error');
+			} else {
+				setResults(data);
+			}
+		} catch (error) {
+			setSearchState('error');
+		}
 	};
 
 	return (
@@ -48,6 +76,7 @@ const SearchBar = ({ handleCitySelection }: SearchBarProps) => {
 				onResultClick={handleResultClick}
 				searchTerm={searchTerm}
 				searchState={searchState}
+				handleClear={handleClear}
 			/>
 			<button className="w-full sm:w-fit btn-text">Search</button>
 		</form>
