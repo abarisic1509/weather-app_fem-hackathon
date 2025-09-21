@@ -11,7 +11,12 @@ This is a solution to the [Weather app challenge on Frontend Mentor](https://www
 
 ### Getting Started
 
-First, add .env file to the root of the project that contains NEXT_PUBLIC_BASE_URL=http://localhost:3000 and NEXT_PUBLIC_WEATHER_API_URL=https://api.open-meteo.com/v1
+First, add .env file to the root of the project that contains 2 variables
+
+```bash
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_WEATHER_API_URL=https://api.open-meteo.com/v1
+```
 
 Then, run the development server:
 
