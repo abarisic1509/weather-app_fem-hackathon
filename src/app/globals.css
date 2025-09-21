@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-primary-main: hsl(233, 67%, 56%);
+	--color-primary-dark: hsl(248, 70%, 36%);
+	--color-secondary-main: hsl(28, 100%, 52%);
+	--color-text-primary: hsl(243, 96%, 9%);
+	--color-text-secondary: hsl(243, 23%, 30%);
+	--color-grey-900: hsl(243, 96%, 9%);
+	--color-grey-800: hsl(243, 27%, 20%);
+	--color-grey-700: hsl(243, 23%, 24%);
+	--color-grey-600: hsl(243, 23%, 30%);
+	--color-grey-300: hsl(240, 6%, 70%);
+	--color-grey-200: hsl(250, 6%, 84%);
+
+	--container-8xl: 1440px;
+}
+
+@custom-variant light (&:where(.light, .light *));
+
+body {
+	@apply flex flex-col bg-grey-900 light:bg-white w-screen min-h-screen overflow-x-hidden font-medium text-white light:text-text-primary text-lg;
+	font-family: var(--font-dm);
+	line-height: 1.2;
+}
+
+/* Typography */
+.text-preset-1 {
+	@apply font-semibold text-8xl leading-none;
+	letter-spacing: -2px;
+}
+.text-preset-2 {
+	@apply font-bold;
+	font-size: 3.25rem;
+	font-family: var(--font-bricolage);
+}
+.text-preset-3 {
+	@apply font-light leading-none;
+	font-size: 2rem;
+}
+.text-preset-4 {
+	@apply font-bold;
+	font-size: 1.75rem;
+}
+.text-preset-5 {
+	@apply font-semibold text-xl;
+}
+.text-preset-5-medium {
+	@apply text-xl;
+}
+.text-preset-7 {
+	@apply text-base;
+}
+.text-preset-8 {
+	@apply text-sm;
+}
+
+/* Buttons */
+.btn-text {
+	@apply flex justify-center items-center gap-4 bg-primary-main hover:bg-primary-dark focus-visible:bg-primary-main disabled:bg-primary-main disabled:opacity-60 px-6 py-4 rounded-xl focus-visible:outline-2 focus-visible:outline-primary-main focus-visible:outline-offset-2 font-semibold text-white text-xl text-center whitespace-nowrap cursor-pointer disabled:cursor-not-allowed;
+}
+
+/* Layout */
+.forecast-grid {
+	@media (min-width: 1280px) {
+		grid-template-columns: 1fr 24rem;
+		grid-template-rows: auto auto;
+		grid-template-areas:
+			'current hourly'
+			'daily hourly';
+
+		.current {
+			grid-area: current;
+		}
+		.daily {
+			grid-area: daily;
+		}
+		.hourly {
+			grid-area: hourly;
+		}
+	}
+}
+
+/* loaders */
+.dot-spinner__dot {
+	@apply top-0 left-0 absolute flex justify-start items-center w-full h-full;
+}
+.dot-spinner__dot::before {
+	@apply bg-white light:bg-grey-900;
+	content: '';
+	min-width: 20%;
+	width: 20%;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	transform: scale(0);
+	opacity: 0.5;
+	animation: pulse0112 calc(var(--uib-speed) * 1.111) ease-in-out infinite;
+	box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);
+}
+
+.dot-spinner__dot:nth-child(2) {
+	transform: rotate(45deg);
+}
+
+.dot-spinner__dot:nth-child(2)::before {
+	animation-delay: calc(var(--uib-speed) * -0.875);
+}
+
+.dot-spinner__dot:nth-child(3) {
+	transform: rotate(90deg);
+}
+
+.dot-spinner__dot:nth-child(3)::before {
+	animation-delay: calc(var(--uib-speed) * -0.75);
+}
+
+.dot-spinner__dot:nth-child(4) {
+	transform: rotate(135deg);
+}
+
+.dot-spinner__dot:nth-child(4)::before {
+	animation-delay: calc(var(--uib-speed) * -0.625);
+}
+
+.dot-spinner__dot:nth-child(5) {
+	transform: rotate(180deg);
+}
+
+.dot-spinner__dot:nth-child(5)::before {
+	animation-delay: calc(var(--uib-speed) * -0.5);
+}
+
+.dot-spinner__dot:nth-child(6) {
+	transform: rotate(225deg);
+}
+
+.dot-spinner__dot:nth-child(6)::before {
+	animation-delay: calc(var(--uib-speed) * -0.375);
+}
+
+.dot-spinner__dot:nth-child(7) {
+	transform: rotate(270deg);
+}
+
+.dot-spinner__dot:nth-child(7)::before {
+	animation-delay: calc(var(--uib-speed) * -0.25);
+}
+
+.dot-spinner__dot:nth-child(8) {
+	transform: rotate(315deg);
+}
+
+.dot-spinner__dot:nth-child(8)::before {
+	animation-delay: calc(var(--uib-speed) * -0.125);
+}
+
+@keyframes pulse0112 {
+	0%,
+	100% {
+		transform: scale(0);
+		opacity: 0.5;
+	}
+
+	50% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
