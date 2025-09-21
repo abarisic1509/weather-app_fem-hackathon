@@ -20,6 +20,7 @@ import DaySelect from '../components/DaySelect';
 const CityForecast = () => {
 	const selectedCity = useSelector((state: RootState) => state.global.selectedCity);
 	const selectedUnit = useSelector((state: RootState) => state.global.selectedMeasures);
+	const selectedIdividualUnits = useSelector((state: RootState) => state.global.individualMeasures);
 
 	const [forecastState, setForecastState] = useState<'loading' | 'empty' | 'error' | null>(null);
 	const [forecastData, setForecastData] = useState<ForecastData | null>(null);
@@ -28,10 +29,23 @@ const CityForecast = () => {
 		const getForecast = async () => {
 			setForecastState('loading');
 			const baseUrl = getWeatherApiUrl();
+			let unitParams = '';
+
+			if (selectedIdividualUnits.temp === 'fahrenheit') {
+				unitParams += '&temperature_unit=fahrenheit';
+			}
+
+			if (selectedIdividualUnits.wind === 'mph') {
+				unitParams += '&wind_speed_unit=mph';
+			}
+
+			if (selectedIdividualUnits.precipitation === 'inches') {
+				unitParams += '&precipitation_unit=inches';
+			}
 
 			try {
 				const res = await fetch(
-					`${baseUrl}/forecast?latitude=${selectedCity?.latitude}&longitude=${selectedCity?.longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weather_code&current=temperature_2m,apparent_temperature,is_day,precipitation,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto${selectedUnit === 'imperial' ? '&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch' : ''}`,
+					`${baseUrl}/forecast?latitude=${selectedCity?.latitude}&longitude=${selectedCity?.longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weather_code&current=temperature_2m,apparent_temperature,is_day,precipitation,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto${selectedUnit === 'imperial' ? '&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch' : selectedUnit === 'mixed' ? unitParams : ''}`,
 					{
 						method: 'GET',
 					}
@@ -52,7 +66,7 @@ const CityForecast = () => {
 		if (selectedCity && selectedUnit) {
 			getForecast();
 		}
-	}, [selectedCity, selectedUnit]);
+	}, [selectedCity, selectedUnit, selectedIdividualUnits]);
 
 	const refactorForecastData = (forecastRes: ForecastRes): ForecastData => {
 		const createForecastBase = (value: number, unit: string): ForecastBase => ({
