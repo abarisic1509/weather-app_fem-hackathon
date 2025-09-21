@@ -3,6 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 import { FaX } from 'react-icons/fa6';
 
 import type { City } from '../../lib/types/city';
+import Loader from './Loader';
 
 interface SearchInputProps {
 	results: City[];
@@ -58,7 +59,16 @@ const SearchInput = ({
 				<Autocomplete.Positioner className="" sideOffset={10} align="start">
 					<Autocomplete.Popup className="flex flex-col gap-1 bg-grey-800 light:bg-white light:shadow-xl p-2 border border-grey-700 light:border-grey-200 rounded-xl w-[var(--anchor-width)] max-w-[var(--available-width)] max-h-[min(var(--available-height),23rem)] overflow-y-auto overscroll-contain text-preset-7 text-white light:text-grey-900 scroll-pb-2 scroll-pt-2">
 						<Autocomplete.Empty className="flex items-center gap-2.5 empty:m-0 empty:p-0 px-2 py-2.5">
-							{searchState === 'error' ? 'No results found.' : 'Loading results'}
+							{searchState === 'error' ? (
+								'No results found.'
+							) : searchState === 'loading' ? (
+								<span className="flex items-center gap-2.5">
+									<Loader type="sm" />
+									<span>Search in porgress</span>
+								</span>
+							) : (
+								'Type in city name to search'
+							)}
 						</Autocomplete.Empty>
 						<Autocomplete.List className={'flex flex-col w-full gap-1'}>
 							{(result: City) => (
